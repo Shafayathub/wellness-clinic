@@ -19,7 +19,7 @@ const Physio = () => {
             Book Appointment
           </button>
         </div>
-        <img src={physio} alt="" />
+        <img className="w-1/2" src={physio} alt="" />
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import banner3 from '../../image/banner/Stress-relief.jpg';
 
 const Banner = () => {
   return (
-    <div className="p-2 md:p-4">
+    <div>
       <Carousel autoPlay infiniteLoop>
         <div>
           <img src={banner1} alt="" />
