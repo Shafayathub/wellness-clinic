@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "wellness-clinic-a3745",
+    "staging": "wellness-clinic-a3745"
+  },
+  "targets": {},
+  "etags": {}
+}
