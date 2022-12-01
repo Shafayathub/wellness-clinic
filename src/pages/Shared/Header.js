@@ -22,7 +22,7 @@ const Header = () => {
           </Link>
         </nav>
         <button class="inline-flex items-center bg-gray-100 dark:bg-gray-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 dark:hover:bg-slate-600 rounded text-base mt-4 md:mt-0">
-          Register/Login
+          <Link to="/login">Register/Login</Link>
         </button>
       </div>
     </header>

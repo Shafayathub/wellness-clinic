@@ -24,7 +24,7 @@ const About = () => {
             </a>
           </button>
         </div>
-        <img className="w-1/2" src={developer} alt="" />
+        <img className="w-1/2 lg:pr-10" src={developer} alt="" />
       </div>
     </div>
   );
