@@ -4,7 +4,7 @@ import logo from '../../image/wellness-clinic.png';
 
 const Footer = () => {
   return (
-    <footer className="text-yellow-600 body-font bg-slate-800">
+    <footer className="body-font bg-slate-800 text-yellow-600">
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
         <Link
           className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"

@@ -4,7 +4,7 @@ import logo from '../../image/wellness-clinic.png';
 
 const Header = () => {
   return (
-    <header className="bg-yellow-400 text-gray-800 font-semibold lg:sticky lg:top-0 z-10 dark:bg-slate-800 dark:text-yellow-400">
+    <header className="font-semibold lg:sticky lg:top-0 z-10 bg-slate-800 text-yellow-400">
       <div className="container mx-auto flex p-3 flex-col md:flex-row items-center">
         <Link to="/">
           <img className="h-16" src={logo} alt="" />
@@ -21,7 +21,7 @@ const Header = () => {
             About
           </Link>
         </nav>
-        <button class="inline-flex items-center bg-gray-100 dark:bg-gray-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 dark:hover:bg-slate-600 rounded text-base mt-4 md:mt-0">
+        <button class="inline-flex items-center bg-gray-500  border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-base mt-4 md:mt-0">
           <Link to="/login">Register/Login</Link>
         </button>
       </div>

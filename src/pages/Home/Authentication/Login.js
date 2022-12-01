@@ -7,7 +7,7 @@ const Login = () => {
     <form className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
         <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-          <img className="mx-auto w-72 lg:w-96" src={login} alt="" />
+          <img className="mx-auto w-72 lg:w-1/2" src={login} alt="" />
         </div>
         <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
           <h2 className="text-gray-900 text-lg font-medium title-font mb-5">

@@ -6,7 +6,7 @@ const Register = () => {
   return (
     <form className="text-gray-600 body-font">
       <div className="container px-5 py-2 mx-auto flex flex-wrap items-center">
-        <img className="mx-auto w-72 lg:w-96" src={register} alt="" />
+        <img className="mx-auto w-72 lg:w-1/3" src={register} alt="" />
 
         <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-7 md:mt-0">
           <h2 className="text-gray-900 text-lg font-medium title-font mb-3">
@@ -62,7 +62,7 @@ const Register = () => {
             <p>
               <small>
                 Already have an account?
-                <Link to="/login" className="underline text-yellow-600 ml-1">
+                <Link to="/login" className="underline text-blue-600 ml-1">
                   Login
                 </Link>
               </small>
