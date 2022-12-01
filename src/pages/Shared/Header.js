@@ -11,14 +11,14 @@ const Header = () => {
         </Link>
 
         <nav className="text-lg md:ml-auto md:mr-auto flex flex-wrap items-center justify-center space-x-5">
-          <Link className="hover:text-yellow-700" to="/chiropractic">
-            Chiropractic
+          <Link className="hover:text-yellow-700" to="/services">
+            Services
           </Link>
-          <Link className="hover:text-yellow-700" to="/massage">
-            Massage Therapy
+          <Link className="hover:text-yellow-700" to="/blog">
+            Blog
           </Link>
-          <Link className="hover:text-yellow-700" to="/stress">
-            Stress Relief
+          <Link className="hover:text-yellow-700" to="/about">
+            About
           </Link>
         </nav>
         <button class="inline-flex items-center bg-gray-100 dark:bg-gray-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 dark:hover:bg-slate-600 rounded text-base mt-4 md:mt-0">
