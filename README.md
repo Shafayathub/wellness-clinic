@@ -1,8 +1,10 @@
 # Live link
 
-(https://wellness-clinic-a3745.web.app/)
+https://wellness-clinic-a3745.web.app/
 
 ## Repository
+
+https://github.com/Shafayathub/wellness-clinic
 
 In the project directory, you can run:
 
