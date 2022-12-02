@@ -10,6 +10,7 @@ const Social = () => {
 
   if (user) {
     navigate('/home');
+    console.log(user);
   }
 
   if (loading) {

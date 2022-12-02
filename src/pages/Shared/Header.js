@@ -7,6 +7,7 @@ import logo from '../../image/wellness-clinic.png';
 
 const Header = () => {
   const [user] = useAuthState(auth);
+  console.log(user);
   return (
     <header className="font-semibold lg:sticky lg:top-0 z-10 bg-slate-800 text-yellow-400">
       <div className="container mx-auto flex p-3 flex-col md:flex-row items-center">

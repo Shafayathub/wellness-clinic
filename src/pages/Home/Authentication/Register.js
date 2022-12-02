@@ -18,7 +18,9 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
-  const [photoURL, setPhotoURL] = useState('');
+  const [photoURL, setPhotoURL] = useState(
+    'https://www.maxpixel.net/static/photo/1x/Avatar-Blank-Profile-Picture-Display-Pic-Mystery-Man-973460.png'
+  );
 
   const navigate = useNavigate();
 
@@ -28,8 +30,9 @@ const Register = () => {
   };
   const userImg = (event) => {
     setPhotoURL(event.target.value);
-    return setPhotoURL;
+    return photoURL;
   };
+
   const userEmail = (event) => {
     setEmail(event.target.value);
     return email;
@@ -44,7 +47,8 @@ const Register = () => {
   };
 
   if (user) {
-    navigate('/home');
+    navigate('/');
+    window.location.reload();
   }
 
   if (loading || updating) {
@@ -56,7 +60,6 @@ const Register = () => {
     if (password === confirmPassword) {
       await createUserWithEmailAndPassword(email, password);
       await updateProfile({ displayName, photoURL });
-      navigate('./');
     }
   };
   return (
@@ -90,10 +93,11 @@ const Register = () => {
               Image
             </label>
             <input
-              onClick={userImg}
+              onChange={userImg}
               type="photoURL"
               id="photoURL"
               name="photoURL"
+              placeholder="paste img address (Optional)"
               className="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>

@@ -93,7 +93,7 @@ const Login = () => {
           </div>
           <input
             type="submit"
-            value="Sign in"
+            value="Login"
             className="text-white bg-gray-700 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded text-lg"
           />
 
