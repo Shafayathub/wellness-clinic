@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import login from '../../../image/Login.gif';
 import Social from './Social/Social';
@@ -15,6 +15,10 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
+
+  // Handling RequireAuth redirection
+  const location = useLocation();
+  let from = location.state?.from?.pathname || '/';
 
   const userEmail = (event) => {
     setEmail(event.target.value);
@@ -32,7 +36,7 @@ const Login = () => {
   };
 
   if (user) {
-    navigate('/');
+    navigate(from, { replace: true });
   }
 
   if (loading) {

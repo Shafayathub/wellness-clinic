@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import physio from '../../../image/physio.png';
 
 const Physio = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-gray-800 p-3 md:p-5">
       <h2 className="mt-5 mb-12 text-center font-bold text-4xl text-yellow-500">
@@ -15,7 +17,9 @@ const Physio = () => {
             posture. Reduces pain and improves range of motion of your spine and
             other joints.
           </p>
-          <button className="mt-12 p-2 bg-yellow-500 rounded-md border-2 hover:bg-yellow-600 text-white font-medium">
+          <button
+            onClick={() => navigate('/anonymous-route')}
+            className="mt-12 p-2 bg-yellow-500 rounded-md border-2 hover:bg-yellow-600 text-white font-medium">
             Book Appointment
           </button>
         </div>

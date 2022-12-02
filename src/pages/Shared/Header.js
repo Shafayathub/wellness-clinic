@@ -28,7 +28,7 @@ const Header = () => {
         {/* Showing User name and Photo */}
         <span className="mr-1">
           {user && (
-            <img className="w-8 rounded-full" src={user?.photoURL} alt="" />
+            <img className="w-9 rounded-full" src={user?.photoURL} alt="" />
           )}
         </span>
         <span className="m-2">{user && <p>{user?.displayName}</p>}</span>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
 import google from '../../../../image/google.png';
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,9 +10,12 @@ const Social = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const navigate = useNavigate();
 
+  // Handling RequireAuth redirection
+  const location = useLocation();
+  let from = location.state?.from?.pathname || '/';
+
   if (user) {
-    navigate('/home');
-    console.log(user);
+    navigate(from, { replace: true });
   }
 
   if (loading) {
