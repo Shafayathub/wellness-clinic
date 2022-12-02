@@ -1,10 +1,48 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import register from '../../../image/Queue.gif';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
 const Register = () => {
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const navigate = useNavigate();
+
+  const userEmail = (event) => {
+    setEmail(event.target.value);
+    return email;
+  };
+  const userPassword = (event) => {
+    setPassword(event.target.value);
+    return password;
+  };
+  const userConfirmPassword = (event) => {
+    setConfirmPassword(event.target.value);
+    console.log(confirmPassword);
+  };
+
+  if (user) {
+    navigate('/home');
+  }
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (password === confirmPassword) {
+      await createUserWithEmailAndPassword(email, password);
+      navigate('/');
+    }
+  };
   return (
-    <form className="text-gray-600 body-font">
+    <form onSubmit={handleSubmit} className="text-gray-600 body-font">
       <div className="container px-5 py-2 mx-auto flex flex-wrap items-center">
         <img className="mx-auto w-72 lg:w-1/3" src={register} alt="" />
 
@@ -31,6 +69,7 @@ const Register = () => {
               Email
             </label>
             <input
+              onBlur={userEmail}
               type="email"
               id="email"
               name="email"
@@ -43,6 +82,7 @@ const Register = () => {
               password
             </label>
             <input
+              onChange={userPassword}
               type="password"
               name="password"
               className="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -52,6 +92,7 @@ const Register = () => {
               Confirm password
             </label>
             <input
+              onChange={userConfirmPassword}
               type="password"
               name="password"
               className="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -78,6 +119,7 @@ const Register = () => {
           <p className="text-xs text-gray-500 mt-2">
             <small>We care about your privacy.</small>
           </p>
+          <p className="text-red-600">{error && error?.code}</p>
         </div>
       </div>
     </form>

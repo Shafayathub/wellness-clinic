@@ -7,12 +7,12 @@ import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyAisOfsaLDG6dFopyU3N6fO5jYrwAfNjMM',
-  authDomain: 'wellness-clinic-a3745.firebaseapp.com',
-  projectId: 'wellness-clinic-a3745',
-  storageBucket: 'wellness-clinic-a3745.appspot.com',
-  messagingSenderId: '305837196727',
-  appId: '1:305837196727:web:6a5e2a3d61d97642741432',
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase

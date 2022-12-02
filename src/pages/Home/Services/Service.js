@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Service = ({ service }) => {
-  const { id, name, price, description, img } = service;
+  const { name, price, description, img } = service;
   return (
     <div className="border border-yellow-500 rounded-lg text-white">
       <img className="w-full rounded-lg" src={img} alt="" />

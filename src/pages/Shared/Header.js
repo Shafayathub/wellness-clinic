@@ -1,8 +1,12 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import logo from '../../image/wellness-clinic.png';
 
 const Header = () => {
+  const [user] = useAuthState(auth);
   return (
     <header className="font-semibold lg:sticky lg:top-0 z-10 bg-slate-800 text-yellow-400">
       <div className="container mx-auto flex p-3 flex-col md:flex-row items-center">
@@ -21,9 +25,27 @@ const Header = () => {
             About
           </Link>
         </nav>
-        <button className="inline-flex items-center bg-gray-500  border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-base mt-4 md:mt-0">
-          <Link to="/login">Register/Login</Link>
-        </button>
+        {user?.uid ? (
+          <Link
+            className="inline-flex items-center bg-gray-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-base mt-4 md:mt-0"
+            onClick={() => signOut(auth)}
+            to="/">
+            Sign Out
+          </Link>
+        ) : (
+          <div>
+            <Link
+              className="inline-flex items-center bg-gray-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-base mt-4 md:mt-0"
+              to="/register">
+              Register
+            </Link>
+            <Link
+              className="ml-2 inline-flex items-center bg-gray-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-base mt-4 md:mt-0"
+              to="/login">
+              Login
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );
