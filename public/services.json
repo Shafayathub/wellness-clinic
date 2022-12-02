@@ -11,13 +11,13 @@
     "name": "Massage Therapy",
     "price": "100",
     "description": "Performed by a licensed massage therapist, massage therapy involves using different pressures, movements and techniques to manipulate muscles and other soft tissues in the body. With a goal of slowing down your nervous system, massage therapy can be used to release stress and tension, provide relief from symptoms, heal injuries and support wellness.",
-    "img": "https://i.ibb.co/CbxZptg/massage-therapy.jpg"
+    "img": "https://i.ibb.co/qjm18K8/physical-therapy.jpg"
   },
   {
     "id": 3,
     "name": "Stress Relief",
     "price": "150",
     "description": "Massage can help to relieve stress on a number of fronts. It activates the body on an internal level by decreasing the level of stress hormone and increasing immune cells. Swedish Massage also relaxes muscles and increases circulation what all together results in a reduction of stress-related pains.",
-    "img": "https://i.ibb.co/ccVwgPb/Stress-relief.jpg"
+    "img": "https://i.ibb.co/FJ7QcKG/pain-stress.jpg"
   }
 ]

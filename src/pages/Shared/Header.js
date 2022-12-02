@@ -25,6 +25,14 @@ const Header = () => {
             About
           </Link>
         </nav>
+        {/* Showing User name and Photo */}
+        <span className="mr-1">
+          {user && (
+            <img className="w-8 rounded-full" src={user?.photoURL} alt="" />
+          )}
+        </span>
+        <span className="m-2">{user && <p>{user?.displayName}</p>}</span>
+
         {user?.uid ? (
           <Link
             className="inline-flex items-center bg-gray-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-base mt-4 md:mt-0"

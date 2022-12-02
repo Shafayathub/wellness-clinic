@@ -3,6 +3,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import login from '../../../image/Login.gif';
+import Social from './Social/Social';
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -100,6 +101,7 @@ const Login = () => {
             <small>We care about your privacy.</small>
           </p>
           <p className="text-red-600">{error && error?.code}</p>
+          <Social></Social>
         </div>
       </div>
     </form>

@@ -1,19 +1,35 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import register from '../../../image/Queue.gif';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import Social from './Social/Social';
 
 const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+  const [updateProfile, updating, DPerror] = useUpdateProfile(auth);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [displayName, setDisplayName] = useState('');
+  const [photoURL, setPhotoURL] = useState('');
 
   const navigate = useNavigate();
 
+  const userName = (event) => {
+    setDisplayName(event.target.value);
+    return displayName;
+  };
+  const userImg = (event) => {
+    setPhotoURL(event.target.value);
+    return setPhotoURL;
+  };
   const userEmail = (event) => {
     setEmail(event.target.value);
     return email;
@@ -31,7 +47,7 @@ const Register = () => {
     navigate('/home');
   }
 
-  if (loading) {
+  if (loading || updating) {
     return <p>Loading...</p>;
   }
 
@@ -39,7 +55,8 @@ const Register = () => {
     event.preventDefault();
     if (password === confirmPassword) {
       await createUserWithEmailAndPassword(email, password);
-      navigate('/');
+      await updateProfile({ displayName, photoURL });
+      navigate('./');
     }
   };
   return (
@@ -58,11 +75,26 @@ const Register = () => {
               Full Name
             </label>
             <input
+              onChange={userName}
               type="full-name"
               id="full-name"
               name="full-name"
               className="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               required
+            />
+          </div>
+          <div className="relative mb-4">
+            <label
+              htmlFor="full-name"
+              className="leading-7 text-sm text-gray-600">
+              Image
+            </label>
+            <input
+              onClick={userImg}
+              type="photoURL"
+              id="photoURL"
+              name="photoURL"
+              className="w-full bg-white rounded border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
           <div className="relative mb-4">
@@ -117,10 +149,12 @@ const Register = () => {
             className="text-white bg-gray-700 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded text-lg"
           />
 
+          <Social></Social>
           <p className="text-xs text-gray-500 mt-2">
             <small>We care about your privacy.</small>
           </p>
           <p className="text-red-600">{error && error?.code}</p>
+          <p className="text-red-600">{DPerror && DPerror?.code}</p>
         </div>
       </div>
     </form>
