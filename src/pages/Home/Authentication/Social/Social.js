@@ -20,7 +20,7 @@ const Social = () => {
   }
 
   if (error) {
-    toast(error?.code);
+    toast.error(error?.code);
   }
 
   return (

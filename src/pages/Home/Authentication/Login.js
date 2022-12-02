@@ -36,11 +36,15 @@ const Login = () => {
   }
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <p className="h-screen text-center my-auto font-bold text-3xl">
+        Loading...
+      </p>
+    );
   }
 
   if (error) {
-    toast(error?.code);
+    toast.error(error?.code);
   }
 
   return (

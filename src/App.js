@@ -9,6 +9,8 @@ import Services from './pages/Home/Services/Services';
 import Footer from './pages/Shared/Footer';
 import Header from './pages/Shared/Header';
 import NotFound from './pages/NotFound';
+import SelectedService from './pages/Home/Services/SelectedService';
+import Checkout from './pages/Checkout/Checkout';
 
 function App() {
   return (
@@ -18,6 +20,10 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/services" element={<Services></Services>}></Route>
+        <Route
+          path="/service/:serviceID"
+          element={<SelectedService></SelectedService>}></Route>
+        <Route path="/checkout" element={<Checkout></Checkout>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
