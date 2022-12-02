@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import login from '../../../image/Login.gif';
 import Social from './Social/Social';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -35,6 +37,10 @@ const Login = () => {
 
   if (loading) {
     return <p>Loading...</p>;
+  }
+
+  if (error) {
+    toast(error?.code);
   }
 
   return (
@@ -96,12 +102,11 @@ const Login = () => {
             value="Login"
             className="text-white bg-gray-700 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-500 rounded text-lg"
           />
-
           <p className="text-xs text-gray-500 mt-3">
             <small>We care about your privacy.</small>
           </p>
-          <p className="text-red-600">{error && error?.code}</p>
           <Social></Social>
+          <ToastContainer />
         </div>
       </div>
     </form>

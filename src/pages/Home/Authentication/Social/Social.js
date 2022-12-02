@@ -3,6 +3,8 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
 import google from '../../../../image/google.png';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Social = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -16,6 +18,11 @@ const Social = () => {
   if (loading) {
     return <p>Loading...</p>;
   }
+
+  if (error) {
+    toast(error?.code);
+  }
+
   return (
     <div>
       <div className="flex items-center justify-evenly">
@@ -34,7 +41,7 @@ const Social = () => {
           />
         </button>
       </div>
-      <p className="text-red-600">{error && error?.code}</p>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };

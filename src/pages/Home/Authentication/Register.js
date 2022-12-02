@@ -7,6 +7,8 @@ import {
 } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Social from './Social/Social';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -52,7 +54,15 @@ const Register = () => {
   }
 
   if (loading || updating) {
-    return <p>Loading...</p>;
+    return (
+      <p className="h-screen text-center my-auto font-bold text-3xl">
+        Loading...
+      </p>
+    );
+  }
+
+  if (error || DPerror) {
+    toast(error?.code);
   }
 
   const handleSubmit = async (event) => {
@@ -157,8 +167,7 @@ const Register = () => {
           <p className="text-xs text-gray-500 mt-2">
             <small>We care about your privacy.</small>
           </p>
-          <p className="text-red-600">{error && error?.code}</p>
-          <p className="text-red-600">{DPerror && DPerror?.code}</p>
+          <ToastContainer></ToastContainer>
         </div>
       </div>
     </form>
