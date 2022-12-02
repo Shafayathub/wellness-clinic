@@ -30,21 +30,14 @@ const Header = () => {
             className="inline-flex items-center bg-gray-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-base mt-4 md:mt-0"
             onClick={() => signOut(auth)}
             to="/">
-            Sign Out
+            LogOut
           </Link>
         ) : (
-          <div>
-            <Link
-              className="inline-flex items-center bg-gray-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-base mt-4 md:mt-0"
-              to="/register">
-              Register
-            </Link>
-            <Link
-              className="ml-2 inline-flex items-center bg-gray-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-base mt-4 md:mt-0"
-              to="/login">
-              Login
-            </Link>
-          </div>
+          <Link
+            className="inline-flex items-center bg-gray-500 border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-base mt-4 md:mt-0"
+            to="/login">
+            Register/Login
+          </Link>
         )}
       </div>
     </header>

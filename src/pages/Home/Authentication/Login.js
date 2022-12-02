@@ -1,10 +1,43 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import login from '../../../image/Login.gif';
 
 const Login = () => {
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+
+  const userEmail = (event) => {
+    setEmail(event.target.value);
+    return email;
+  };
+  const userPassword = (event) => {
+    setPassword(event.target.value);
+    return password;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    await signInWithEmailAndPassword(email, password);
+  };
+
+  if (user) {
+    navigate('/');
+  }
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
-    <form className="text-gray-600 body-font">
+    <form onSubmit={handleSubmit} className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
         <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
           <img className="mx-auto w-72 lg:w-1/2" src={login} alt="" />
@@ -18,6 +51,7 @@ const Login = () => {
               Email
             </label>
             <input
+              onBlur={userEmail}
               type="email"
               id="email"
               name="email"
@@ -30,6 +64,7 @@ const Login = () => {
               password
             </label>
             <input
+              onChange={userPassword}
               type="password"
               id="password"
               name="password"
@@ -64,6 +99,7 @@ const Login = () => {
           <p className="text-xs text-gray-500 mt-3">
             <small>We care about your privacy.</small>
           </p>
+          <p className="text-red-600">{error && error?.code}</p>
         </div>
       </div>
     </form>
