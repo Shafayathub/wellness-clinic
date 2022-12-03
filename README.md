@@ -18,7 +18,7 @@ In the project directory, you can run:
 
 ### Tecnology Used
 
-- React
+- React.js
 - Firebase
 - React Firebase hook
-- Tailwind
+- Tailwind CSS
