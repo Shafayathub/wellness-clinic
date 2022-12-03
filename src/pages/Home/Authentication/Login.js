@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import login from '../../../image/Login.gif';
@@ -10,6 +13,9 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+  // reset password hook
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,6 +40,24 @@ const Login = () => {
 
     await signInWithEmailAndPassword(email, password);
   };
+
+  // Handling reset password
+  const resetPassword = async () => {
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast('email sent');
+    } else {
+      toast('Please enter your email address.');
+    }
+  };
+
+  if (sending) {
+    return (
+      <p className="h-screen text-center my-auto font-bold text-3xl">
+        Sending email...
+      </p>
+    );
+  }
 
   if (user) {
     navigate(from, { replace: true });
@@ -101,7 +125,11 @@ const Login = () => {
             <p>
               <small>
                 Forget Passord?
-                <button className="underline text-blue-600 ml-1">Reset</button>
+                <button
+                  onClick={resetPassword}
+                  className="underline text-blue-600 ml-1">
+                  Reset
+                </button>
               </small>
             </p>
           </div>
